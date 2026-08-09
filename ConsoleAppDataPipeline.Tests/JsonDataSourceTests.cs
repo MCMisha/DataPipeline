@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using System.Text.Json;
 using ConsoleAppDataPipeline.DataSources;
 using ConsoleAppDataPipeline.Mappers;
 using ConsoleAppDataPipeline.Models;
+using System.Text.Json;
 
 namespace ConsoleAppDataPipeline.Tests;
 
@@ -212,6 +212,31 @@ public class JsonDataSourceTests
         Assert.That(
             result.Value,
             Is.EqualTo(new User("Anna", "anna@example.com", 25)));
+    }
+    
+    [Test]
+    public void ReadAsync_WithMalformedJson_ThrowsJsonException()
+    {
+        const string json =
+            """
+            [
+              {
+                "Name": "Anna",
+                "Email": "anna@example.com",
+                "Age": 25
+            ]
+            """;
+
+        using var stream = CreateStream(json);
+
+        Assert.ThrowsAsync(Is.InstanceOf<JsonException>(),
+            async () =>
+            {
+                if (stream != null)
+                    await foreach (var _ in _dataSource.ReadAsync(stream, _mapper))
+                    {
+                    }
+            });
     }
 
     private static MemoryStream CreateStream(string content)

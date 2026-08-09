@@ -53,6 +53,36 @@ public class CsvDataSourceTests
 
         Assert.That(result, Is.Empty);
     }
+    
+    [Test]
+    public void ReadAsync_CancelledToken_ThrowsOperationCanceledException()
+    {
+        const string csv =
+            """
+            Name,Age
+            Misha,26
+            John,31
+            """;
+
+        var mapper = new TestRecordMapper();
+        using var cts = new CancellationTokenSource();
+        cts.Cancel();
+
+        Assert.CatchAsync<OperationCanceledException>(
+            async () =>
+            {
+                await using var stream = new MemoryStream(
+                    Encoding.UTF8.GetBytes(csv));
+
+                if (cts != null)
+                    await foreach (var _ in _dataSource.ReadAsync(
+                                       stream,
+                                       mapper,
+                                       cts.Token))
+                    {
+                    }
+            });
+    }
 
     [Test]
     public async Task ReadAsync_HeaderOnly_ReturnsEmptyCollection()
