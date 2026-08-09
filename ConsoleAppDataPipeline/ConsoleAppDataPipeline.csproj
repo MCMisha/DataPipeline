@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="bin\Debug\net10.0\input\users.json" />
+      <Content Include="bin\Debug\net10.0\output\errors.json" />
+      <Content Include="bin\Debug\net10.0\output\users.json" />
+      <Content Include="bin\Debug\net10.0\test.csv" />
+      <Content Include="bin\Debug\net10.0\users.json" />
+    </ItemGroup>
+
+</Project>
