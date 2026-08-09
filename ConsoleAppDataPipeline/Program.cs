@@ -7,7 +7,7 @@ using ConsoleAppDataPipeline.Runners;
 using ConsoleAppDataPipeline.Sinks;
 
 
-IDataSource<User> dataSource = new JsonDataSource<User>();
+IDataSource<User> dataSource = new CsvDataSource<User>();
 UserMapper userMapper = new UserMapper();
 await using var recordSink = new JsonRecordSink<User>(
     "output/users.json",
@@ -21,7 +21,7 @@ await using var errorSink = new JsonErrorSink(
     {
         Indented = true
     });
-await using Stream fileStream = File.OpenRead("input/users.json");
+await using Stream fileStream = File.OpenRead("input/test.csv");
 IPipelineRunner<User> pipelineRunner = new PipelineRunner<User>(dataSource, userMapper, recordSink, errorSink);
 await pipelineRunner.RunAsync(fileStream);
 Console.WriteLine(pipelineRunner.GetStatistics());

@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Include="bin\Debug\net10.0\input\test.csv" />
       <Content Include="bin\Debug\net10.0\input\users.json" />
       <Content Include="bin\Debug\net10.0\output\errors.json" />
       <Content Include="bin\Debug\net10.0\output\users.json" />

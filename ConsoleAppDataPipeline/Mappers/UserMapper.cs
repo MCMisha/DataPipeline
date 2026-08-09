@@ -6,7 +6,7 @@ namespace ConsoleAppDataPipeline.Mappers;
 
 public class UserMapper : IRecordMapper<User>
 {
-    const string emailPattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
+    private const string EmailPattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
     public MappingResult<User> Map(RawRecord record)
     {
         var errors = new List<MappingError>();
@@ -43,7 +43,7 @@ public class UserMapper : IRecordMapper<User>
                 "Email must be less than 254 characters",
                 email));
         } 
-        else if (!Regex.IsMatch(email, emailPattern))
+        else if (!Regex.IsMatch(email, EmailPattern))
         {
             errors.Add(new MappingError(
                 "Email",
