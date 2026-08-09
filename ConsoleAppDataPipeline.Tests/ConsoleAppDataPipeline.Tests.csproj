@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
-        <RootNamespace>TestProject1</RootNamespace>
+        <RootNamespace>ConsoleAppDataPipeline.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

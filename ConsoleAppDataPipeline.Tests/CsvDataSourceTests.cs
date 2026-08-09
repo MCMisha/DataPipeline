@@ -4,25 +4,12 @@ using ConsoleAppDataPipeline.Interfaces;
 using ConsoleAppDataPipeline.Mappers;
 using ConsoleAppDataPipeline.Models;
 
-namespace TestProject1;
+namespace ConsoleAppDataPipeline.Tests;
 
-public class Tests
+public class CsvDataSourceTests
 {
-    private CsvDataSource<TestRecord> _dataSource;
-    
-    private async Task<List<T>> ToListAsync<T>(
-        IAsyncEnumerable<T> source)
-    {
-        var results = new List<T>();
+    private CsvDataSource<TestRecord> _dataSource = null!;
 
-        await foreach (var item in source)
-        {
-            results.Add(item);
-        }
-
-        return results;
-    }
-    
     [SetUp]
     public void Setup()
     {
@@ -169,6 +156,30 @@ public class Tests
         });
     }
 
+    [Test]
+    public async Task ReadAsync_HeaderContainsEmptyHeader_ReturnsFailure()
+    {
+        const string csv =
+            """
+            Name,
+            Misha,26
+            """;
+
+        var mapper = new TestRecordMapper();
+
+        var result = await ReadAsync(csv, mapper);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(result, Has.Count.EqualTo(1));
+            Assert.That(result[0].IsSuccess, Is.False);
+            Assert.That(result[0].RowNumber, Is.EqualTo(1));
+            Assert.That(
+                result[0].Errors[0].Message,
+                Is.EqualTo("CSV header contains an empty column name"));
+        });
+    }
+    
     [Test]
     public async Task ReadAsync_DuplicateHeader_ReturnsFailure()
     {
