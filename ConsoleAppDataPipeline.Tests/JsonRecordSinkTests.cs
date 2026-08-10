@@ -57,14 +57,14 @@ public class JsonRecordSinkTests
             new User(
                 "Misha",
                 "misha@example.com",
-                26));
+                26,
+                'M'));
 
         await sink.DisposeAsync();
 
         var json = await File.ReadAllTextAsync(filePath);
 
-        Assert.DoesNotThrow(
-            () => JsonDocument.Parse(json));
+        Assert.DoesNotThrow(() => JsonDocument.Parse(json));
 
         var users = JsonSerializer.Deserialize<List<User>>(json);
 
@@ -75,7 +75,8 @@ public class JsonRecordSinkTests
                 new User(
                     "Misha",
                     "misha@example.com",
-                    26)));
+                    26,
+                    'M')));
     }
 
     [Test]
@@ -91,13 +92,15 @@ public class JsonRecordSinkTests
             new User(
                 "Misha",
                 "misha@example.com",
-                26));
+                26,
+                'M'));
 
         await sink.WriteAsync(
             new User(
                 "Anna",
                 "anna@example.com",
-                31));
+                31,
+                'F'));
 
         await sink.DisposeAsync();
 
@@ -115,7 +118,8 @@ public class JsonRecordSinkTests
                     new User(
                         "Misha",
                         "misha@example.com",
-                        26)));
+                        26,
+                        'M')));
 
             Assert.That(
                 users[1],
@@ -123,7 +127,8 @@ public class JsonRecordSinkTests
                     new User(
                         "Anna",
                         "anna@example.com",
-                        31)));
+                        31,
+                        'F')));
         });
     }
 
@@ -154,13 +159,13 @@ public class JsonRecordSinkTests
 
         await sink.DisposeAsync();
 
-        Assert.ThrowsAsync<ObjectDisposedException>(
-            async () =>
-                await sink.WriteAsync(
-                    new User(
-                        "Misha",
-                        "misha@example.com",
-                        26)));
+        Assert.ThrowsAsync<ObjectDisposedException>(async () =>
+            await sink.WriteAsync(
+                new User(
+                    "Misha",
+                    "misha@example.com",
+                    26, 
+                    'M')));
     }
 
     [Test]
@@ -174,7 +179,6 @@ public class JsonRecordSinkTests
 
         await sink.DisposeAsync();
 
-        Assert.DoesNotThrowAsync(
-            async () => await sink.DisposeAsync());
+        Assert.DoesNotThrowAsync(async () => await sink.DisposeAsync());
     }
 }

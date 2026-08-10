@@ -27,12 +27,14 @@ public class JsonDataSourceTests
                               {
                                 "Name": "Anna",
                                 "Email": "anna@example.com",
-                                "Age": 25
+                                "Age": 25,
+                                "Gender": "F"
                               },
                               {
                                 "Name": "John",
                                 "Email": "john@example.com",
-                                "Age": 31
+                                "Age": 31,
+                                "Gender": "M"
                               }
                             ]
                             """;
@@ -46,10 +48,10 @@ public class JsonDataSourceTests
         Assert.That(results.All(result => result.IsSuccess), Is.True);
 
         Assert.That(results[0].Value, Is.EqualTo(
-            new User("Anna", "anna@example.com", 25)));
+            new User("Anna", "anna@example.com", 25, 'F')));
 
         Assert.That(results[1].Value, Is.EqualTo(
-            new User("John", "john@example.com", 31)));
+            new User("John", "john@example.com", 31, 'M')));
     }
 
     [Test]
@@ -99,7 +101,8 @@ public class JsonDataSourceTests
                               {
                                 "Name": "Anna",
                                 "Email": "anna@example.com",
-                                "Age": "not-a-number"
+                                "Age": "not-a-number",
+                                "Gender": "F"
                               }
                             ]
                             """;
@@ -194,7 +197,8 @@ public class JsonDataSourceTests
                               {
                                 "name": "Anna",
                                 "email": "anna@example.com",
-                                "age": 25
+                                "age": 25,
+                                "gender": "F"
                               }
                             ]
                             """;
@@ -211,7 +215,7 @@ public class JsonDataSourceTests
         Assert.That(result.IsSuccess, Is.True);
         Assert.That(
             result.Value,
-            Is.EqualTo(new User("Anna", "anna@example.com", 25)));
+            Is.EqualTo(new User("Anna", "anna@example.com", 25, 'F')));
     }
     
     [Test]

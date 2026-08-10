@@ -38,10 +38,10 @@ public class PipelineIntegrationTests
     {
         const string csv =
             """
-            Name,Email,Age
-            Misha,misha@example.com,26
-            Invalid,invalid@example.com,abc
-            Anna,anna@example.com,31
+            Name,Email,Age,Gender
+            Misha,misha@example.com,26,M
+            Invalid,invalid@example.com,abc,C
+            Anna,anna@example.com,31,F
             """;
 
         await using var inputStream = new MemoryStream(
@@ -80,7 +80,8 @@ public class PipelineIntegrationTests
                     new User(
                         "Misha",
                         "misha@example.com",
-                        26)));
+                        26,
+                        'M')));
 
             Assert.That(
                 users[1],
@@ -88,7 +89,8 @@ public class PipelineIntegrationTests
                     new User(
                         "Anna",
                         "anna@example.com",
-                        31)));
+                        31,
+                        'F')));
 
             Assert.That(errorSink.Errors, Has.Count.EqualTo(1));
             Assert.That(errorSink.Errors[0].Field, Is.EqualTo("Age"));
