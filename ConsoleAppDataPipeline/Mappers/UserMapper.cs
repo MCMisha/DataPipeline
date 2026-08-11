@@ -67,13 +67,32 @@ public class UserMapper : IRecordMapper<User>
                 "Age must be greater than or equal to zero",
                 ageText));
         }
+        var gender = record.GetValueOrDefault("Gender");
+        if (string.IsNullOrWhiteSpace(gender))
+        {
+            errors.Add(new MappingError(
+                "Gender",
+                "Gender is required",
+                gender));
+        }
+        else if (gender.Length != 1)
+        {
+            errors.Add(new MappingError(
+                "Gender",
+                "Gender must be one character",
+                gender));
+        }
 
+        if (gender is not ("F" or "M"))
+        {
+            errors.Add(new MappingError("Gender", "Gender must be F or M", gender));
+        }
         if (errors.Count > 0)
         {
             return MappingResult<User>.Failure(record.RowNumber, errors.ToArray());
         }
-
+        
         return MappingResult<User>.Success(
-            new User(name!, email, age));
+            new User(name!, email!, age, gender!.ToUpper().FirstOrDefault()));
     }
 }

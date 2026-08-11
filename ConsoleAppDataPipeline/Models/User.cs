@@ -1,3 +1,3 @@
 ﻿namespace ConsoleAppDataPipeline.Models;
 
-public record User(string Name, string Email, int Age);
+public record User(string Name, string Email, int Age, char Gender);
