@@ -8,18 +8,21 @@ public class PipelineRunner<T> : IPipelineRunner<T> where T : class
     private readonly IRecordMapper<T> _mapper;
     private readonly IRecordSink<T> _recordSink;
     private readonly IErrorSink _errorSink;
+    private readonly IProcessorPipeline<T>? _processorPipeline;
     private PipelineRunnerStatistics _statistics;
 
     public PipelineRunner(
         IDataSource<T> dataSource,
         IRecordMapper<T> mapper,
         IRecordSink<T> recordSink,
-        IErrorSink errorSink)
+        IErrorSink errorSink,
+        IProcessorPipeline<T>? pipeline = null)
     {
         _dataSource = dataSource;
         _mapper = mapper;
         _recordSink = recordSink;
         _errorSink = errorSink;
+        _processorPipeline = pipeline;
         _statistics = new PipelineRunnerStatistics();
     }
 
@@ -35,8 +38,9 @@ public class PipelineRunner<T> : IPipelineRunner<T> where T : class
         {
             if (result.IsSuccess)
             {
+                var processedValue = _processorPipeline?.Process(result.Value!);
                 await _recordSink.WriteAsync(
-                    result.Value!,
+                    processedValue ?? result.Value!,
                     cancellationToken);
                 _statistics.SuccessfulRecords++;
             }
@@ -46,11 +50,12 @@ public class PipelineRunner<T> : IPipelineRunner<T> where T : class
                     result.Errors, cancellationToken);
                 _statistics.FailedRecords++;
             }
+
             _statistics.TotalRecords++;
         }
 
         _statistics.Duration = DateTime.Now.Subtract(startTime);
     }
-    
+
     public string GetStatistics() => _statistics.ToString();
 }

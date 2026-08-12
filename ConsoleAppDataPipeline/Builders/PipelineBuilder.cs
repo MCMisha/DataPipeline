@@ -23,13 +23,11 @@ public class PipelineBuilder<T> where T : class
         return this;
     }
 
-    public PipelineBuilder<T> If(Func<T, bool> condition, Func<T, T> transformation)
+    public IConditionalStepBuilder<T> If(Func<T, bool> condition)
     {
         ArgumentNullException.ThrowIfNull(condition);
-        ArgumentNullException.ThrowIfNull(transformation);
 
-        _processors.Add(new ConditionalProcessor<T>(condition, transformation));
-        return this;
+        return new ConditionalStepBuilder<T>(this, condition);
     }
 
     public IProcessorPipeline<T> Build()

@@ -39,9 +39,8 @@ public class PipelineBuilderTests
         var builder = new PipelineBuilder<TestRecord>();
 
         var pipeline = builder
-            .If(
-                record => record.Value >= 10,
-                record => new TestRecord(Value: record.Value * 2))
+            .If(record => record.Value >= 10)
+            .Then(record => new TestRecord(Value: record.Value * 2))
             .Build();
 
         var result = pipeline.Process(new TestRecord(10));
@@ -66,14 +65,13 @@ public class PipelineBuilderTests
 
         Assert.That(result.Value, Is.EqualTo(2));
     }
-    
+
     [Test]
     public void If_ConditionIsFalse_DoesNotApplyTransformation()
     {
         var pipeline = new PipelineBuilder<TestRecord>()
-            .If(
-                record => record.Value >= 10,
-                record => new TestRecord(Value: record.Value * 2))
+            .If(record => record.Value >= 10)
+            .Then(record => new TestRecord(Value: record.Value * 2))
             .Build();
 
         var input = new TestRecord(5);
