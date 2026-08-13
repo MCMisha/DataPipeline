@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDataPipeline", "ConsoleAppDataPipeline\ConsoleAppDataPipeline.csproj", "{B2EF8BFC-96FD-4B8D-8350-3714FD8409DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPipeline", "DataPipeline\DataPipeline.csproj", "{B2EF8BFC-96FD-4B8D-8350-3714FD8409DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDataPipeline.Tests", "ConsoleAppDataPipeline.Tests\ConsoleAppDataPipeline.Tests.csproj", "{20E8F6D7-0D66-4804-A4FF-938F3C1727A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPipeline.Tests", "DataPipeline.Tests\DataPipeline.Tests.csproj", "{20E8F6D7-0D66-4804-A4FF-938F3C1727A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPipeline.Demo", "DataPipeline.Demo\DataPipeline.Demo.csproj", "{38C50BB4-F09C-499D-9415-B86C4C437E38}"
 EndProject
