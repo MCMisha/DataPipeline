@@ -1,14 +1,13 @@
 ﻿using System.Text.Json;
-using ConsoleAppDataPipeline.Builders;
-using ConsoleAppDataPipeline.DataSources;
-using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Mappers;
-using ConsoleAppDataPipeline.Models;
-using ConsoleAppDataPipeline.Runners;
-using ConsoleAppDataPipeline.Sinks;
+using DataPipeline.Core.Builders;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Runners;
+using DataPipeline.Core.Sinks;
+using DataPipeline.Csv;
 using DataPipeline.Demo.Mappers;
 using DataPipeline.Demo.Models;
 using DataPipeline.Demo.Models.Enums;
+using DataPipeline.Demo.Sinks;
 
 string Capitalize(string input)
 {

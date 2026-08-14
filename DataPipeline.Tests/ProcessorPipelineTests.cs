@@ -1,7 +1,7 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Runners;
+﻿using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Runners;
 
-namespace ConsoleAppDataPipeline.Tests;
+namespace DataPipeline.Tests;
 
 [TestFixture]
 public class ProcessorPipelineTests

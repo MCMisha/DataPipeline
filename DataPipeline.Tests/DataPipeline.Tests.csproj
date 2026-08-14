@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
-        <RootNamespace>ConsoleAppDataPipeline.Tests</RootNamespace>
+        <RootNamespace>DataPipeline.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +22,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DataPipeline\DataPipeline.csproj" />
+      <ProjectReference Include="..\DataPipeline.Core\DataPipeline.Core.csproj" />
+      <ProjectReference Include="..\DataPipeline.Csv\DataPipeline.Csv.csproj" />
+      <ProjectReference Include="..\DataPipeline.Demo\DataPipeline.Demo.csproj" />
+      <ProjectReference Include="..\DataPipeline.Json\DataPipeline.Json.csproj" />
     </ItemGroup>
 
 </Project>

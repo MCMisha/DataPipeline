@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
+﻿using DataPipeline.Core.Interfaces;
 
-namespace ConsoleAppDataPipeline.Runners;
+namespace DataPipeline.Core.Runners;
 
 public class ProcessorPipeline<T> : IProcessorPipeline<T> where T : class
 {

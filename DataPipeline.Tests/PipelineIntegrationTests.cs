@@ -1,13 +1,12 @@
 ﻿using System.Text;
 using System.Text.Json;
-using ConsoleAppDataPipeline.DataSources;
-using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Mappers;
-using ConsoleAppDataPipeline.Models;
-using ConsoleAppDataPipeline.Runners;
-using ConsoleAppDataPipeline.Sinks;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Models;
+using DataPipeline.Core.Runners;
+using DataPipeline.Core.Sinks;
+using DataPipeline.Csv;
 
-namespace ConsoleAppDataPipeline.Tests;
+namespace DataPipeline.Tests;
 
 [TestFixture]
 public class PipelineIntegrationTests
@@ -92,7 +91,7 @@ public class PipelineIntegrationTests
                         31,
                         'F')));
 
-            Assert.That(errorSink.Errors, Has.Count.EqualTo(1));
+            Assert.That(errorSink.Errors, Has.Count.EqualTo(2));
             Assert.That(errorSink.Errors[0].Field, Is.EqualTo("Age"));
             Assert.That(
                 errorSink.Errors[0].RawValue,

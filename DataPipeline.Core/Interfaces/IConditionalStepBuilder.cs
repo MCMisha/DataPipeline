@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Builders;
+﻿using DataPipeline.Core.Builders;
 
-namespace ConsoleAppDataPipeline.Interfaces;
+namespace DataPipeline.Core.Interfaces;
 
 public interface IConditionalStepBuilder<T> where T : class
 {

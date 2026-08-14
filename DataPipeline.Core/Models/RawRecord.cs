@@ -1,4 +1,4 @@
-﻿namespace ConsoleAppDataPipeline.Models;
+﻿namespace DataPipeline.Core.Models;
 
 public sealed class RawRecord
 {

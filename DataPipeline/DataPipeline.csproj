@@ -17,4 +17,11 @@
       <Content Include="bin\Debug\net10.0\users.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Builders\" />
+      <Folder Include="Interfaces\" />
+      <Folder Include="Runners\" />
+      <Folder Include="Sinks\" />
+    </ItemGroup>
+
 </Project>

@@ -1,22 +1,20 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Models;
+﻿using System.Text.Json;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Models;
 
-namespace ConsoleAppDataPipeline.Sinks;
+namespace DataPipeline.Demo.Sinks;
 
-using System.Text.Json;
-
-public sealed class JsonRecordSink<T> : IRecordSink<T>, IAsyncDisposable
+public class JsonErrorSink : IErrorSink, IAsyncDisposable
 {
     private readonly FileStream _stream;
     private readonly Utf8JsonWriter _writer;
     private bool _disposed;
-
-    public JsonRecordSink(
+    
+    public JsonErrorSink(
         string filePath,
         JsonWriterOptions writerOptions = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(filePath);
-
         var directory = Path.GetDirectoryName(filePath);
 
         if (!string.IsNullOrWhiteSpace(directory))
@@ -35,16 +33,16 @@ public sealed class JsonRecordSink<T> : IRecordSink<T>, IAsyncDisposable
         _writer = new Utf8JsonWriter(_stream, writerOptions);
         _writer.WriteStartArray();
     }
-
+    
     public async Task WriteAsync(
-        T record,
+        IReadOnlyList<MappingError> errors,
         CancellationToken cancellationToken = default)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
 
-        ArgumentNullException.ThrowIfNull(record);
+        ArgumentNullException.ThrowIfNull(errors);
 
-        JsonSerializer.Serialize(_writer, record);
+        JsonSerializer.Serialize(_writer, errors);
 
         await _writer.FlushAsync(cancellationToken);
     }

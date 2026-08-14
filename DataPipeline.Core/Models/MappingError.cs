@@ -1,4 +1,4 @@
-﻿namespace ConsoleAppDataPipeline.Mappers;
+﻿namespace DataPipeline.Core.Models;
 
 public sealed record MappingError(
     string? Field,

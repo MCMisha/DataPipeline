@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Builders;
+﻿using DataPipeline.Core.Builders;
 
-namespace ConsoleAppDataPipeline.Tests;
+namespace DataPipeline.Tests;
 
 [TestFixture]
 public class PipelineBuilderTests

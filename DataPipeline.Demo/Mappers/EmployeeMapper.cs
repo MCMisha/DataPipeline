@@ -1,7 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Mappers;
-using ConsoleAppDataPipeline.Models;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Models;
 using DataPipeline.Demo.Models;
 using DataPipeline.Demo.Models.Enums;
 

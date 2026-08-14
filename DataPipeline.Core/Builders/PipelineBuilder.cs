@@ -1,8 +1,8 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Processors;
-using ConsoleAppDataPipeline.Runners;
+﻿using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Processors;
+using DataPipeline.Core.Runners;
 
-namespace ConsoleAppDataPipeline.Builders;
+namespace DataPipeline.Core.Builders;
 
 public class PipelineBuilder<T> where T : class
 {

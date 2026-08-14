@@ -1,8 +1,7 @@
 ﻿using System.Text.Json;
-using ConsoleAppDataPipeline.Models;
-using ConsoleAppDataPipeline.Sinks;
+using DataPipeline.Core.Sinks;
 
-namespace ConsoleAppDataPipeline.Tests;
+namespace DataPipeline.Tests;
 
 [TestFixture]
 public class JsonRecordSinkTests

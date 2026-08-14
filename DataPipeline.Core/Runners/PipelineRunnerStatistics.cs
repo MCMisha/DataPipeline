@@ -1,4 +1,4 @@
-﻿namespace ConsoleAppDataPipeline.Runners;
+﻿namespace DataPipeline.Core.Runners;
 
 public sealed class PipelineRunnerStatistics
 {

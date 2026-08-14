@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
+﻿using DataPipeline.Core.Interfaces;
 
-namespace ConsoleAppDataPipeline.Processors;
+namespace DataPipeline.Core.Processors;
 
 public class TransformationProcessor<T> : IProcessor<T>
     where T : class

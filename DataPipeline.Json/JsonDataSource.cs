@@ -1,10 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.Json;
-using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Mappers;
-using ConsoleAppDataPipeline.Models;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Models;
 
-namespace ConsoleAppDataPipeline.DataSources;
+namespace DataPipeline.Json;
 
 public class JsonDataSource<T> : IDataSource<T> where T: class
 {

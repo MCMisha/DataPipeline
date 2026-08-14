@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DataPipeline\DataPipeline.csproj" />
+      <ProjectReference Include="..\DataPipeline.Core\DataPipeline.Core.csproj" />
+      <ProjectReference Include="..\DataPipeline.Csv\DataPipeline.Csv.csproj" />
+      <ProjectReference Include="..\DataPipeline.Json\DataPipeline.Json.csproj" />
     </ItemGroup>
 
     <ItemGroup>

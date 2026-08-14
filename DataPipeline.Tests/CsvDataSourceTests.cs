@@ -1,10 +1,9 @@
 ﻿using System.Text;
-using ConsoleAppDataPipeline.DataSources;
-using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Mappers;
-using ConsoleAppDataPipeline.Models;
+using DataPipeline.Core.Interfaces;
+using DataPipeline.Core.Models;
+using DataPipeline.Csv;
 
-namespace ConsoleAppDataPipeline.Tests;
+namespace DataPipeline.Tests;
 
 public class CsvDataSourceTests
 {

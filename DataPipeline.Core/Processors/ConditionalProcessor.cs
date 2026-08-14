@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
+﻿using DataPipeline.Core.Interfaces;
 
-namespace ConsoleAppDataPipeline.Processors;
+namespace DataPipeline.Tests.Processors;
 
 public class ConditionalProcessor<T> : IProcessor<T> where T : class
 {

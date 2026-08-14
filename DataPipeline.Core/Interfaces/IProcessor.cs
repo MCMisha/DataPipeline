@@ -1,4 +1,4 @@
-﻿namespace ConsoleAppDataPipeline.Interfaces;
+﻿namespace DataPipeline.Core.Interfaces;
 
 public interface IProcessor<T> where T : class
 {

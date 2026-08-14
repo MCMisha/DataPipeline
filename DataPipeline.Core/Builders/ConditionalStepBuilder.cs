@@ -1,7 +1,7 @@
-﻿using ConsoleAppDataPipeline.Interfaces;
-using ConsoleAppDataPipeline.Processors;
+﻿using DataPipeline.Tests.Processors;
+using DataPipeline.Core.Interfaces;
 
-namespace ConsoleAppDataPipeline.Builders;
+namespace DataPipeline.Core.Builders;
 
 public class ConditionalStepBuilder<T> : IConditionalStepBuilder<T>
     where T : class

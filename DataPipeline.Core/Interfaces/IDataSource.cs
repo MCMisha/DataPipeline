@@ -1,6 +1,6 @@
-﻿using ConsoleAppDataPipeline.Mappers;
+﻿using DataPipeline.Core.Models;
 
-namespace ConsoleAppDataPipeline.Interfaces;
+namespace DataPipeline.Core.Interfaces;
 
 public interface IDataSource<T> where T : class
 {
