@@ -321,16 +321,13 @@ The statistics include:
 ```text
 DataPipeline/
 │
-├── ConsoleAppDataPipeline/
+├── DataPipeline.Core/
 │   ├── Builders/
-│   │   ├── PipelineBuilder.cs
-│   │   └── ConditionalStepBuilder.cs
-│   │
-│   ├── DataSources/
-│   │   ├── CsvDataSource.cs
-│   │   └── JsonDataSource.cs
+│   │   ├── ConditionalStepBuilder.cs
+│   │   └── PipelineBuilder.cs
 │   │
 │   ├── Interfaces/
+│   │   ├── IConditionalStepBuilder.cs
 │   │   ├── IDataSource.cs
 │   │   ├── IErrorSink.cs
 │   │   ├── IPipelineRunner.cs
@@ -339,14 +336,10 @@ DataPipeline/
 │   │   ├── IRecordMapper.cs
 │   │   └── IRecordSink.cs
 │   │
-│   ├── Mappers/
+│   ├── Models/
 │   │   ├── MappingError.cs
 │   │   ├── MappingResult.cs
-│   │   └── UserMapper.cs
-│   │
-│   ├── Models/
-│   │   ├── RawRecord.cs
-│   │   └── User.cs
+│   │   └── RawRecord.cs
 │   │
 │   ├── Processors/
 │   │   ├── ConditionalProcessor.cs
@@ -361,14 +354,27 @@ DataPipeline/
 │       ├── JsonErrorSink.cs
 │       └── JsonRecordSink.cs
 │
-├── ConsoleAppDataPipeline.Tests/
+├── DataPipeline.Csv/
+│   └── CsvDataSource.cs
+│
+├── DataPipeline.Tests/
+│   ├── CsvDataSourceTests.cs
+│   ├── JsonDataSourceTests.cs
+│   ├── JsonRecordSinkTests.cs
+│   ├── PipelineBuilderDslTests.cs
+│   ├── PipelineBuilderTests.cs
+│   ├── PipelineIntegrationTests.cs
+│   ├── PipelineProcessingIntegrationTests.cs
+│   ├── ProcessorPipelineTests.cs
+│   └── User.cs
 │
 ├── DataPipeline.Demo/
 │   ├── Mappers/
 │   ├── Models/
-│   ├── input/
-│   ├── output/
 │   └── Program.cs
+│
+├── DataPipeline.Json/
+│   └── JsonDataSource.cs
 │
 └── README.md
 ```
