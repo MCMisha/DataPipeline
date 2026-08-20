@@ -4,10 +4,22 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>DataPipeline.Json</PackageId>
+        <Version>0.1.0-alpha.1</Version>
+        <Authors>Mikhail Yakushevich</Authors>
+        <Description>Csv data source implementation for DataPipeline.</Description>
+        <RepositoryUrl>https://github.com/MCMisha/DataPipeline</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\README.md"
+              Pack="true"
+              PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DataPipeline.Core\DataPipeline.Core.csproj" />
+      <PackageReference Include="DataPipeline.Core" Version="0.1.0-alpha.1" />
     </ItemGroup>
 
 </Project>
